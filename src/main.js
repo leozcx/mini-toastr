@@ -207,6 +207,7 @@ var miniToastr = (function () {
       const newConfig = {}
       Object.assign(newConfig, defaultConfig)
       Object.assign(newConfig, config)
+      this.config = newConfig 
 
       const cssStr = makeCss(newConfig.style)
       appendStyles(cssStr)
@@ -225,7 +226,7 @@ var miniToastr = (function () {
          * @return  {exports}
          */
         exports[newConfig.types[v]] = function (message, title, timeout, cb, config) {
-          this.showMessage(message, title, newConfig.types[v], timeout, cb, config || newConfig)
+          this.showMessage(message, title, newConfig.types[v], timeout, cb, config)
           return this
         }.bind(this)
       })
