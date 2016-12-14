@@ -1,0 +1,22 @@
+<DOCTYPE html>
+
+<html>
+  <head>
+    <script src="./src/main.js"></script>
+  </head>
+  <body>
+    <div id="holder">
+      <button id="b1" onclick="showInfo()">Show Info</button>
+      <button id="cleanButton" onclick="clearAll()">Clear All</button>
+    </div>
+    <script>
+miniToastr.init({timeout: 2000})
+function showInfo() {
+        miniToastr.info('aabb')
+}
+function clearAll() {
+  miniToastr.clearAll()
+}
+    </script>
+  </body>
+</html>
