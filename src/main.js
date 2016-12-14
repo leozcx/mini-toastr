@@ -225,7 +225,7 @@ var miniToastr = (function () {
          * @return  {exports}
          */
         exports[newConfig.types[v]] = function (message, title, timeout, cb, config) {
-          this.showMessage(message, title, newConfig.types[v], timeout, cb, config)
+          this.showMessage(message, title, newConfig.types[v], timeout, cb, config || newConfig)
           return this
         }.bind(this)
       })
