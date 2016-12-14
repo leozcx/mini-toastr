@@ -232,6 +232,13 @@ var miniToastr = (function () {
       })
 
       return this
+    },
+    clearAll () {
+      console.log('abou tot clear')
+      let node = this.config.node
+      while (node.hasChildNodes()) {
+        node.removeChild(node.lastChild);
+      }
     }
   }
 
