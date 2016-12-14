@@ -207,6 +207,7 @@ var miniToastr = (function () {
       const newConfig = {}
       Object.assign(newConfig, defaultConfig)
       Object.assign(newConfig, config)
+      this.config = newConfig 
 
       const cssStr = makeCss(newConfig.style)
       appendStyles(cssStr)
