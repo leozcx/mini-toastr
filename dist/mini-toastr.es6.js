@@ -194,7 +194,9 @@ var miniToastr = (function () {
       }
 
       newConfig.node.insertBefore(notificationElem, newConfig.node.firstChild)
-      setTimeout(() => newConfig.animation(notificationElem, cb), timeout || newConfig.timeout)
+      timeout = timeout || newConfig.timeout
+      if (timeout !== 0)
+        setTimeout(() => newConfig.animation(notificationElem, cb), timeout)
 
       if (cb) cb()
       return this
@@ -207,6 +209,7 @@ var miniToastr = (function () {
       const newConfig = {}
       Object.assign(newConfig, defaultConfig)
       Object.assign(newConfig, config)
+      this.config = newConfig 
 
       const cssStr = makeCss(newConfig.style)
       appendStyles(cssStr)
@@ -231,6 +234,12 @@ var miniToastr = (function () {
       })
 
       return this
+    },
+    clearAll () {
+      let node = this.config.node
+      while (node.hasChildNodes()) {
+        node.removeChild(node.lastChild);
+      }
     }
   }
 

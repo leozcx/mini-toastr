@@ -201,9 +201,10 @@ var miniToastr = function () {
       }
 
       newConfig.node.insertBefore(notificationElem, newConfig.node.firstChild);
-      setTimeout(function () {
+      timeout = timeout || newConfig.timeout;
+      if (timeout !== 0) setTimeout(function () {
         return newConfig.animation(notificationElem, cb);
-      }, timeout || newConfig.timeout);
+      }, timeout);
 
       if (cb) cb();
       return this;
@@ -219,6 +220,7 @@ var miniToastr = function () {
       var newConfig = {};
       Object.assign(newConfig, defaultConfig);
       Object.assign(newConfig, config);
+      this.config = newConfig;
 
       var cssStr = makeCss(newConfig.style);
       appendStyles(cssStr);
@@ -243,6 +245,12 @@ var miniToastr = function () {
       });
 
       return this;
+    },
+    clearAll: function clearAll() {
+      var node = this.config.node;
+      while (node.hasChildNodes()) {
+        node.removeChild(node.lastChild);
+      }
     }
   };
 
